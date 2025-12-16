@@ -1,0 +1,22 @@
+{
+  "name": "teststoreplaywrightuiautomation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vasilver2074/TeststorePlaywrightUIAutomation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vasilver2074/TeststorePlaywrightUIAutomation/issues"
+  },
+  "homepage": "https://github.com/vasilver2074/TeststorePlaywrightUIAutomation#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^25.0.2"
+  }
+}
