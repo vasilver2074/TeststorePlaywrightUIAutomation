@@ -3,20 +3,21 @@ import { test } from "../fixtures/fixtures";
 
 test.describe("Teststore UI Playwright automation", () => {
 
-  test.beforeEach(async ({ loginPage, mainPage ,beforeFixture }) => {
-    
+  test.beforeEach(async ({ loginPage, mainPage, beforeFixture }) => {
+
   });
 
-  test('TS-001 has title',
+  test('TS-001 User Sign in - positive',
     {
       tag: ["@regression, @positive"]
     },
-    async ({ page }) => {
-      
-      
+    async ({ mainPage }) => {
+
+      expect(await mainPage.isSignOutVisible()).toBe(true);
+
     });
 
-  test.skip('get started link',
+  test('TS-002 User Sign in - positive',
     {
       tag: ["@regression, @positive"]
     },

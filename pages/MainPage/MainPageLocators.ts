@@ -5,5 +5,11 @@ export class MainPageLocators extends BasePageLocators {
 
     readonly navigateToSighnInPageLocator: Locator = this.baseLocator.getByRole(
         'link',
-        { name: ' Sign in' });
+        { name: ' Sign in' }
+    );
+
+    readonly signOutPageLocator: Locator = this.baseLocator.getByRole(
+        'link',
+        { name: ' Sign out' }
+    );
 }

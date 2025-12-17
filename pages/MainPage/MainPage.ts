@@ -15,4 +15,8 @@ export class MainPage extends BasePage {
     async navigateToSignInPage(): Promise<void> {
         await this.locators.navigateToSighnInPageLocator.click();
     }
+
+    async isSignOutVisible(): Promise<boolean> {
+        return await this.locators.signOutPageLocator.isVisible();
+    }
 }

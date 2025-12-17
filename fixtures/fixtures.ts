@@ -20,10 +20,10 @@ export const test = base.extend<Pages>({
     },
 
     beforeFixture: async ({ mainPage, loginPage }, use) => {
-        await mainPage.navigate('https://teststore.automationtesting.co.uk/index.php');
+        await mainPage.navigate(process.env.BASE_URL!);
         await mainPage.navigateToSignInPage();
-        await loginPage.fillEmail('vasilver@gmail.com');
-        await loginPage.fillPassword('123qwe');
+        await loginPage.fillEmail(process.env.EMAIL!);
+        await loginPage.fillPassword(process.env.PASSWORD!);
         await loginPage.clickLogin();
         await use();
     }
