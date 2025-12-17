@@ -1,16 +1,10 @@
-import { test, expect } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage/LoginPage';
-import { MainPage } from '../pages/MainPage/MainPage';
+import { expect } from '@playwright/test';
+import { test } from "../fixtures/fixtures";
 
-test.describe("Check cart", () => {
+test.describe("Teststore UI Playwright automation", () => {
 
-  let loginPage: LoginPage;
-  let mainPage: MainPage;
-
-  //test.beforeEach(async ({ loginPage }) => {
-  test.beforeEach(async ({ page }) => {
-    loginPage = new LoginPage(page);
-    mainPage = new MainPage(page);
+  test.beforeEach(async ({ loginPage, mainPage ,beforeFixture }) => {
+    
   });
 
   test('TS-001 has title',
@@ -18,14 +12,8 @@ test.describe("Check cart", () => {
       tag: ["@regression, @positive"]
     },
     async ({ page }) => {
-      await mainPage.navigate('https://teststore.automationtesting.co.uk/index.php');
-      await mainPage.navigateToSignInPage();
-      await loginPage.fillEmail('vasilver@gmail.com');
-      await loginPage.fillPassword('123qwe');
-      await loginPage.clickLogin();
-
-      // Expect a title "to contain" a substring.
-      //await expect(page).toHaveTitle(/Playwright/);
+      
+      
     });
 
   test.skip('get started link',
