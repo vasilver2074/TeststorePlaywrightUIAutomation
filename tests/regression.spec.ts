@@ -12,31 +12,36 @@ test.describe("Teststore UI Playwright automation", () => {
       tag: ["@regression, @positive"]
     },
     async ({ mainPage }) => {
-
-      expect(await mainPage.isSignOutVisible()).toBe(true);
-
+      await test.step('Verify that the sign out button is visible', async () => {
+        expect(await mainPage.isSignOutVisible()).toBe(true);
+      });
     });
 
   test('TS-002 User Sign in - positive',
     {
       tag: ["@regression, @positive"]
     },
-    async ({ page }) => {
-      await page.goto('https://playwright.dev/');
+    async ({ mainPage, searchResultPage }) => {
+      await test.step('Verify that the sign out button is visible', async () => {
+        await mainPage.inputSearchMessage('accessories');
+      });
 
-      // Click the get started link.
-      await page.getByRole('link', { name: 'Get started' }).click();
+      await test.step('Verify that the sign out button is visible', async () => {
+        expect(await searchResultPage.isSearchResultsVisible()).toBe(true);
+      });
+    });
 
-      // Expects page to have a heading with the name of Installation.
-      await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+    test('TS-003 User Sign in - positive',
+    {
+      tag: ["@regression, @positive"]
+    },
+    async ({ mainPage, searchResultPage }) => {
+      await test.step('Verify that the sign out button is visible', async () => {
+        await mainPage.inputSearchMessage('accessories');
+      });
 
-      // await page.goto('https://teststore.automationtesting.co.uk/index.php');
-      // await page.getByRole('button', { name: 'Next' }).click();
-      // await page.getByRole('link', { name: ' Sign in' }).click();
-      // await page.getByRole('textbox', { name: 'Email' }).click();
-      // await page.getByRole('textbox', { name: 'Email' }).fill('vasilver@gmail.com');
-      // await page.getByRole('textbox', { name: 'Password input' }).click();
-      // await page.getByRole('textbox', { name: 'Password input' }).fill('123qwe');
-      // await page.getByRole('button', { name: 'Sign in' }).click();
+      await test.step('Verify that the sign out button is visible', async () => {
+        expect(await searchResultPage.getCartItemsCount()).toBe(8);
+      });
     });
 });

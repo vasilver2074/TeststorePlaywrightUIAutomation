@@ -12,4 +12,9 @@ export class MainPageLocators extends BasePageLocators {
         'link',
         { name: ' Sign out' }
     );
+
+    readonly searchFieldLocator: Locator = this.baseLocator.getByRole(
+        'textbox', 
+        { name: 'Search' }
+    );
 }
