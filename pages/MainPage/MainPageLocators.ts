@@ -17,4 +17,8 @@ export class MainPageLocators extends BasePageLocators {
         'textbox', 
         { name: 'Search' }
     );
+
+    readonly countSearchIconsItensLocator: Locator = this.baseLocator.locator(
+        '[class="ui-menu-item"]'
+    );
 }
