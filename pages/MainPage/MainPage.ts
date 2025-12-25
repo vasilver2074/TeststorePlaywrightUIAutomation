@@ -1,8 +1,9 @@
-import { Page } from "@playwright/test";
+import { expect, Page } from "@playwright/test";
 import { BasePage } from "../BasePage/BasePage";
 import { MainPageLocators } from "./MainPageLocators";
 import { SearchResultPage } from "../SearchResultPage/SearchResultPage";
 import { time } from "node:console";
+import { HeaderComponent } from "../components/HeaderComponent/HeaderComponent";
 
 export class MainPage extends BasePage {
 
@@ -10,30 +11,33 @@ export class MainPage extends BasePage {
         super(page);
     }
 
+    readonly headerComponent = new HeaderComponent(this.page.locator('#index')); //#header
+
     readonly locators: MainPageLocators = new MainPageLocators(
         this.page.locator('#index')
     );
 
     async navigateToSignInPage(): Promise<void> {
-        await this.locators.navigateToSighnInPageLocator.click();
+        await this.headerComponent.navigateToSignInPage();
     }
 
     async isSignOutVisible(): Promise<boolean> {
-        return await this.locators.signOutPageLocator.isVisible();
+        return await this.headerComponent.isSignOutVisible();
     }
 
     async inputSearchMessage(searchMessage: string): Promise<void> {
-        await this.locators.searchFieldLocator.fill(searchMessage);
+        await this.headerComponent.inputSearchMessage(searchMessage);
     }
 
-    async runSearch(): Promise<SearchResultPage> {
-        await this.locators.searchFieldLocator.press('Enter');
-        return new SearchResultPage(this.page);
+    async runSearch(): Promise<void> {
+        await this.headerComponent.runSearch();
     }
 
     async getSearchIconsItemsCount(): Promise<number> {
-        await this.page.waitForSelector('[class="ui-menu-item"]', { state: 'visible', timeout: 2000 });
-        const items = await this.locators.countSearchIconsItensLocator.count(); //await page.waitForSelector('your-selector', { state: 'visible', timeout: 5000 });
-        return items;
+        return await this.headerComponent.getSearchIconsItemsCount();
+    }
+
+    async navigateToAccessoriesPage(): Promise<void> {
+        await this.headerComponent.navigateToAccessoriesPage();
     }
 }

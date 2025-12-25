@@ -8,12 +8,6 @@ export class LoginPage extends BasePage {
         super(page);
     }
 
-    // async login(username: string, password: string): Promise<void> {
-    //   await this.locators.userNameInputLocator.fill(username);
-    //   await this.locators.passwordInputLocator.fill(password);
-    //   await this.locators.loginButtonLocator.click();
-    // }
-
     readonly locators: LoginPageLocators = new LoginPageLocators(
         this.page.locator('#login-form')
     );

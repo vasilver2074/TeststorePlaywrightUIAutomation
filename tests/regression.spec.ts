@@ -53,7 +53,7 @@ test.describe("Teststore UI Playwright automation", () => {
       });
     });
 
-  test('TS-004 User verified icon displaying in during search - positive',
+  test('TS-004 User verified icon displaying in Search field during search - positive',
     {
       tag: ["@regression, @positive"]
     },
@@ -67,5 +67,58 @@ test.describe("Teststore UI Playwright automation", () => {
       });
     });
 
+  test('TS-005 User verified Ceramic filter in Accessories page - positive',
+    {
+      tag: ["@regression, @positive"]
+    },
+    async ({ mainPage, accessoriesPage }) => {
+      await test.step('Verify that the sign out button is visible', async () => {
+        await mainPage.navigateToAccessoriesPage()
+      });
 
+      await test.step('Verify that during search the number of displaying icons is equal to 8', async () => {
+        await accessoriesPage.clickHomeAccessories();
+      });
+
+      await test.step('Verify that during search the number of displaying icons is equal to 8', async () => {
+        await accessoriesPage.clickCeramic();
+      });
+
+      await test.step('Verify that during search the number of displaying icons is equal to 4', async () => {
+        expect(await accessoriesPage.getCeramicAccessoriesCount()).toBe(4);
+      });
+
+      test('TS-006 User verified Ceramic filter in Accessories page - positive',
+        {
+          tag: ["@regression, @positive"]
+        },
+        async ({ mainPage, accessoriesPage }) => {
+          await test.step('Verify that the sign out button is visible', async () => {
+            await mainPage.navigateToAccessoriesPage()
+          });
+
+          await test.step('Verify that during search the number of displaying icons is equal to 8', async () => {
+            await accessoriesPage.clickHomeAccessories();
+          });
+
+          await test.step('Verify that during search the number of displaying icons is equal to 8', async () => {
+            await accessoriesPage.clickCeramic();
+          });
+
+          await test.step('Verify that during search the number of displaying icons is equal to 4', async () => {
+            expect(await accessoriesPage.getCeramicAccessoriesCount()).toBe(4);
+          });
+
+          // await page.getByRole('link', { name: 'Hummingbird printed t-shirt' }).first().click();
+          // await page.getByRole('radio', { name: 'White' }).check();
+          // await page.getByRole('radio', { name: 'Black' }).check();
+          // await page.goto('https://teststore.automationtesting.co.uk/index.php?id_product=1&id_product_attribute=2&rewrite=hummingbird-printed-t-shirt&controller=product#/1-size-s/11-color-black');
+          // await page.getByRole('button').first().click();
+          // await page.getByRole('button').first().click();
+          // await page.getByRole('button', { name: 'favorite_border' }).click();
+          // await page.getByText('My wishlist', { exact: true }).click();
+          // await page.getByRole('button', { name: ' Add to cart' }).click();
+          // await page.getByRole('button', { name: 'Close' }).click();
+        });
+    });
 });
