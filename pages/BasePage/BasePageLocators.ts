@@ -5,5 +5,5 @@ export abstract class BasePageLocators {
 
     constructor(baseLocator: Locator) {
         this.baseLocator = baseLocator;
-    }
+    };
 }

@@ -12,5 +12,19 @@ export class AccessoriesPageLocators extends BasePageLocators {
         'label.facet-label:has(a:has-text("Ceramic")) input'
     );
 
-    readonly countCeramicAccessoriesLocator: Locator = this.baseLocator.locator('#js-product-list .js-product');
+    readonly countCeramicAccessoriesLocator: Locator = this.baseLocator.locator(
+        '#js-product-list .js-product'
+    );
+
+    // readonly productAccessoriesLocator: Locator = this.baseLocator.getByRole(
+    //     'link', { 
+    //         name: `${productName}`
+    //     }).first();
+
+    getProductAccessoriesLocator(productName: string): Locator {
+        //const productId = productName.toLowerCase().replace(/\s+/g, "-");
+        return this.baseLocator.getByRole('link', { 
+            name: `${productName}`
+        }).first();
+    };
 }

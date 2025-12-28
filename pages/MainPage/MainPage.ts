@@ -1,8 +1,6 @@
-import { expect, Page } from "@playwright/test";
+import { Page } from "@playwright/test";
 import { BasePage } from "../BasePage/BasePage";
 import { MainPageLocators } from "./MainPageLocators";
-import { SearchResultPage } from "../SearchResultPage/SearchResultPage";
-import { time } from "node:console";
 import { HeaderComponent } from "../components/HeaderComponent/HeaderComponent";
 
 export class MainPage extends BasePage {
@@ -39,5 +37,9 @@ export class MainPage extends BasePage {
 
     async navigateToAccessoriesPage(): Promise<void> {
         await this.headerComponent.navigateToAccessoriesPage();
+    }
+
+    async chooseProduct(): Promise<void> {
+        await this.locators.chooseProductLocator.click();
     }
 }

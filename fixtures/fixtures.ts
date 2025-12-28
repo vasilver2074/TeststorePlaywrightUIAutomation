@@ -3,12 +3,14 @@ import { LoginPage } from '../pages/LoginPage/LoginPage';
 import { MainPage } from '../pages/MainPage/MainPage';
 import { SearchResultPage } from '../pages/SearchResultPage/SearchResultPage';
 import { AccessoriesPage } from '../pages/AccessoriesPage/AccessoriesPage';
+import { ProductDetailsPage } from '../pages/ProductDetailsPage/ProductDetailsPage';
 
 type Pages = {
     loginPage: LoginPage;
     mainPage: MainPage;
     searchResultPage: SearchResultPage;
     accessoriesPage: AccessoriesPage;
+    productDetailsPage: ProductDetailsPage;
     beforeFixture: void;
 }
 
@@ -29,9 +31,14 @@ export const test = base.extend<Pages>({
         await use(searchResultPage);
     },
 
-    accessoriesPage: async ({ page }, use) => {
-        const accessoriesPage = new AccessoriesPage(page);
-        await use(accessoriesPage);
+        accessoriesPage: async ({ page }, use) => {
+            const accessoriesPage = new AccessoriesPage(page);
+            await use(accessoriesPage);
+        },
+
+    productDetailsPage: async ({ page }, use) => {
+        const productDetailsPage = new ProductDetailsPage(page);
+        await use(productDetailsPage);
     },
 
     beforeFixture: async ({ mainPage, loginPage }, use) => {
