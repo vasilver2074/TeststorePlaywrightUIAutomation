@@ -16,7 +16,7 @@ export class SearchResultPage extends BasePage {
         return await this.locators.searchResultsLocator.isVisible();
     }
 
-    async getCartItemsCount(): Promise<number> {
+    async getSearchResultItemsCount(): Promise<number> {
         const items = await this.locators.countAccessoriesLocator.count();
         return items;
     }

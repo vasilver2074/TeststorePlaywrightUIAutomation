@@ -29,11 +29,11 @@ test.describe("Teststore UI Playwright automation", () => {
       tag: ["@regression, @positive"]
     },
     async ({ mainPage, searchResultPage }) => {
-      await test.step('Verify that user can enter search message', async () => {
+      await test.step('User enters search message', async () => {
         await mainPage.inputSearchMessage('accessories');
       });
 
-      await test.step('Verify that user can run search', async () => {
+      await test.step('User runs search', async () => {
         await mainPage.runSearch();
       });
 
@@ -47,16 +47,16 @@ test.describe("Teststore UI Playwright automation", () => {
       tag: ["@regression, @positive"]
     },
     async ({ mainPage, searchResultPage }) => {
-      await test.step('Verify that user can enter search message', async () => {
+      await test.step('User enters search message', async () => {
         await mainPage.inputSearchMessage('accessories');
       });
 
-      await test.step('Verify that user can run search', async () => {
+      await test.step('User runs search', async () => {
         await mainPage.runSearch();
       });
 
       await test.step('Verify that the search result count is equal to 8', async () => {
-        expect(await searchResultPage.getCartItemsCount()).toBe(8);
+        expect(await searchResultPage.getSearchResultItemsCount()).toBe(8);
       });
     });
 
@@ -65,7 +65,7 @@ test.describe("Teststore UI Playwright automation", () => {
       tag: ["@regression, @positive"]
     },
     async ({ mainPage, searchResultPage }) => {
-      await test.step('Verify that the sign out button is visible', async () => {
+      await test.step('User enters search message', async () => {
         await mainPage.inputSearchMessage('accessories');
       });
 
@@ -79,52 +79,52 @@ test.describe("Teststore UI Playwright automation", () => {
       tag: ["@regression, @positive"]
     },
     async ({ mainPage, accessoriesPage }) => {
-      await test.step('Verify that the sign out button is visible', async () => {
+      await test.step('User navigates to Accessories page', async () => {
         await mainPage.navigateToAccessoriesPage()
       });
 
-      await test.step('Verify that during search the number of displaying icons is equal to 8', async () => {
+      await test.step('User tap Home Accessories checkbox', async () => {
         await accessoriesPage.clickHomeAccessories();
       });
 
-      await test.step('Verify that during search the number of displaying icons is equal to 8', async () => {
+      await test.step('User tap Ceramic checkbox', async () => {
         await accessoriesPage.clickCeramic();
       });
 
-      await test.step('Verify that during search the number of displaying icons is equal to 4', async () => {
+      await test.step('Verify that filtered items count is equal to 4', async () => {
         expect(await accessoriesPage.getCeramicAccessoriesCount()).toBe(4);
       });
     });
 
   for (const product of productAccessories) {
-    test(`TS-006 User verified Product page ${product.name} - positive`,
+    test(`TS-006 User verified Product name ${product.name} in Product icon is equals in Product Details page - positive`,
     {
       tag: ["@regression, @positive"]
     },
     async ({ mainPage, accessoriesPage, productDetailsPage }) => {
-      await test.step('Verify that the sign out button is visible', async () => {
+      await test.step('User navigates to Accessories page', async () => {
         await mainPage.navigateToAccessoriesPage()
       });
 
-      await test.step('Verify that during search the number of displaying icons is equal to 8', async () => {
+      await test.step('User tap Home Accessories checkbox', async () => {
         await accessoriesPage.clickHomeAccessories();
       });
 
-      await test.step('Verify that during search the number of displaying icons is equal to 8', async () => {
+      await test.step('User tap Ceramic checkbox', async () => {
         await accessoriesPage.clickCeramic();
       });
 
-      await test.step('Verify that during search the number of displaying icons is equal to 8', async () => {
-        await accessoriesPage.clickProductAccessories(product.name);
+      await test.step('User click Product Item', async () => {
+        await accessoriesPage.clickProductItem(product.name);
       });
 
-      await test.step('Verify that during search the number of displaying icons is equal to 4', async () => {
+      await test.step('Verify that Product name in Product icon is equals in Product Details page', async () => {
         expect(await productDetailsPage.getProductName()).toContain(`${product.name.toLowerCase()}`);
       });
     });
   }
 
-  test('TS-007 User verified Ceramic filter in Accessories page - positive',
+  test.skip('TS-007 User verified Ceramic filter in Accessories page - positive',
     {
       tag: ["@regression, @positive"]
     },

@@ -28,8 +28,8 @@ export class AccessoriesPage extends BasePage {
         return this.locators.countCeramicAccessoriesLocator.count();
     };
 
-    async clickProductAccessories(productName: string): Promise<void> {
-        await this.locators.getProductAccessoriesLocator(productName).click();
+    async clickProductItem(productName: string): Promise<void> {
+        await this.locators.getProductItemsLocator(productName).click();
     };
 
 }

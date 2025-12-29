@@ -16,13 +16,7 @@ export class AccessoriesPageLocators extends BasePageLocators {
         '#js-product-list .js-product'
     );
 
-    // readonly productAccessoriesLocator: Locator = this.baseLocator.getByRole(
-    //     'link', { 
-    //         name: `${productName}`
-    //     }).first();
-
-    getProductAccessoriesLocator(productName: string): Locator {
-        //const productId = productName.toLowerCase().replace(/\s+/g, "-");
+    getProductItemsLocator(productName: string): Locator {
         return this.baseLocator.getByRole('link', { 
             name: `${productName}`
         }).first();
