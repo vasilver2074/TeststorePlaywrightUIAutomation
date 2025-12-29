@@ -21,4 +21,13 @@ export class AccessoriesPageLocators extends BasePageLocators {
             name: `${productName}`
         }).first();
     };
+
+    readonly resetAllFiltersLocator: Locator = this.baseLocator.getByRole(
+        'button', {
+        name: ' Clear all' 
+    });
+
+    readonly countProductItemsLocator: Locator = this.baseLocator.locator(
+        '[class="js-product product col-xs-12 col-sm-6 col-xl-4"]'
+    );
 }

@@ -24,7 +24,7 @@ export class MainPage extends BasePage {
     }
 
     async inputSearchMessage(searchMessage: string): Promise<void> {
-        await this.headerComponent.inputSearchMessage(searchMessage);
+        await this.headerComponent.inputSearchMessage(searchMessage );
     }
 
     async runSearch(): Promise<void> {
@@ -33,6 +33,7 @@ export class MainPage extends BasePage {
 
     async getSearchIconsItemsCount(): Promise<number> {
         return await this.headerComponent.getSearchIconsItemsCount();
+
     }
 
     async navigateToAccessoriesPage(): Promise<void> {

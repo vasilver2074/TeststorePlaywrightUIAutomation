@@ -64,7 +64,7 @@ test.describe("Teststore UI Playwright automation", () => {
     {
       tag: ["@regression, @positive"]
     },
-    async ({ mainPage, searchResultPage }) => {
+    async ({ mainPage }) => {
       await test.step('User enters search message', async () => {
         await mainPage.inputSearchMessage('accessories');
       });
@@ -124,26 +124,66 @@ test.describe("Teststore UI Playwright automation", () => {
     });
   }
 
-  test.skip('TS-007 User verified Ceramic filter in Accessories page - positive',
+  test('TS-007 User verified filters reset works correctly - positive',
     {
       tag: ["@regression, @positive"]
     },
     async ({ mainPage, accessoriesPage }) => {
-      await test.step('Verify that the sign out button is visible', async () => {
+      await test.step('User navigates to Accessories page', async () => {
         await mainPage.navigateToAccessoriesPage()
       });
 
-      await test.step('Verify that during search the number of displaying icons is equal to 8', async () => {
+      await test.step('User tap Home Accessories checkbox', async () => {
         await accessoriesPage.clickHomeAccessories();
       });
 
-      await test.step('Verify that during search the number of displaying icons is equal to 8', async () => {
+      await test.step('User tap Ceramic checkbox', async () => {
         await accessoriesPage.clickCeramic();
       });
 
       await test.step('Verify that during search the number of displaying icons is equal to 4', async () => {
         expect(await accessoriesPage.getCeramicAccessoriesCount()).toBe(4);
       });
+
+      await test.step('User resets all filters', async () => {
+        await accessoriesPage.resetAllFilters();
+      });
+
+      await test.step('Verify that after resets all filters Product items count is equal to 11', async () => {
+        expect(await accessoriesPage.getSearchResultItemsCount()).toBe(11);
+      });
+    });
+
+    test.skip('TS-008 User verified filters reset works correctly - positive',
+    {
+      tag: ["@regression, @positive"]
+    },
+    async ({ mainPage, accessoriesPage }) => {
+      await test.step('User navigates to Accessories page', async () => {
+        await mainPage.navigateToAccessoriesPage()
+      });
+
+      await test.step('User tap Home Accessories checkbox', async () => {
+        await accessoriesPage.clickHomeAccessories();
+      });
+
+      await test.step('User tap Ceramic checkbox', async () => {
+        await accessoriesPage.clickCeramic();
+      });
+
+      await test.step('Verify that during search the number of displaying icons is equal to 4', async () => {
+        expect(await accessoriesPage.getCeramicAccessoriesCount()).toBe(4);
+      });
+
+      await test.step('User resets all filters', async () => {
+        await accessoriesPage.resetAllFilters();
+      });
+
+      await test.step('Verify that after resets all filters Product items count is equal to 11', async () => {
+        expect(await accessoriesPage.getSearchResultItemsCount()).toBe(11);
+      });
+
+    
 
       // await page.getByText('Size: M').click();
       // await page.getByLabel('Size').selectOption('1');

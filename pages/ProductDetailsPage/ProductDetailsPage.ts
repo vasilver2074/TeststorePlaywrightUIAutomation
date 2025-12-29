@@ -15,31 +15,6 @@ export class ProductDetailsPage extends BasePage {
 
     async getProductName(): Promise<string> {
         return (await this.locators.productNameLocator.innerText()).toLowerCase();
-    }
+    };
     
-    // await page.getByRole('heading', { name: 'Mug The best is yet to come' }).click(); productNameLocator
-
-    // async navigateToSignInPage(): Promise<void> {
-    //     await this.headerComponent.navigateToSignInPage();
-    // }
-
-    // async isSignOutVisible(): Promise<boolean> {
-    //     return await this.headerComponent.isSignOutVisible();
-    // }
-
-    // async inputSearchMessage(searchMessage: string): Promise<void> {
-    //     await this.headerComponent.inputSearchMessage(searchMessage);
-    // }
-
-    // async runSearch(): Promise<void> {
-    //     await this.headerComponent.runSearch();
-    // }
-
-    // async navigateToAccessoriesPage(): Promise<void> {
-    //     await this.headerComponent.navigateToAccessoriesPage();
-    // }
-
-    // async chooseProduct(): Promise<void> {
-    //     await this.locators.chooseProductLocator.click();
-    // }
 }

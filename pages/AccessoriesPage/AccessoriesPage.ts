@@ -32,4 +32,16 @@ export class AccessoriesPage extends BasePage {
         await this.locators.getProductItemsLocator(productName).click();
     };
 
+    async resetAllFilters(): Promise<void> {
+        await this.locators.resetAllFiltersLocator.click();
+    };
+
+    async getSearchResultItemsCount(): Promise<number> {
+        await expect( this.locators.countProductItemsLocator
+        ).toHaveCount(11, { timeout: 3000 });
+
+        return this.locators.countProductItemsLocator.count();
+    };
+    
+
 }

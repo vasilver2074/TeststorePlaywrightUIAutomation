@@ -22,8 +22,5 @@ export class ProductDetailsPageLocators extends BasePageLocators {
         '#main > .row.product-container.js-product-container > :nth-child(2) > h1'
     );
 
-    // await page.getByRole('heading', { name: 'Mug The best is yet to come' }).click();  #main > .row.product-container.js-product-container > :nth-child(2) > h1
-    
 
-   
 }
