@@ -31,10 +31,10 @@ export const test = base.extend<Pages>({
         await use(searchResultPage);
     },
 
-        accessoriesPage: async ({ page }, use) => {
-            const accessoriesPage = new AccessoriesPage(page);
-            await use(accessoriesPage);
-        },
+    accessoriesPage: async ({ page }, use) => {
+        const accessoriesPage = new AccessoriesPage(page);
+        await use(accessoriesPage);
+    },
 
     productDetailsPage: async ({ page }, use) => {
         const productDetailsPage = new ProductDetailsPage(page);

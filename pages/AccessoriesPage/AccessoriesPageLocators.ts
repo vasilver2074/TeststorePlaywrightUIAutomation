@@ -17,14 +17,14 @@ export class AccessoriesPageLocators extends BasePageLocators {
     );
 
     getProductItemsLocator(productName: string): Locator {
-        return this.baseLocator.getByRole('link', { 
+        return this.baseLocator.getByRole('link', {
             name: `${productName}`
         }).first();
     };
 
     readonly resetAllFiltersLocator: Locator = this.baseLocator.getByRole(
         'button', {
-        name: ' Clear all' 
+        name: ' Clear all'
     });
 
     readonly countProductItemsLocator: Locator = this.baseLocator.locator(

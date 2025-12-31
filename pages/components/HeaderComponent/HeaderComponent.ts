@@ -32,7 +32,7 @@ export class HeaderComponent extends BaseComponentsPage {
             timeout: 2000,
         });
 
-        return await this.locators.countSearchIconsItemsLocator.count();
+        return this.locators.countSearchIconsItemsLocator.count();
     };
 
     async navigateToAccessoriesPage(): Promise<void> {
@@ -44,6 +44,6 @@ export class HeaderComponent extends BaseComponentsPage {
     };
 
     async isSignOutVisible(): Promise<boolean> {
-        return await this.locators.signOutPageLocator.isVisible();
+        return this.locators.signOutPageLocator.isVisible();
     };
 }

@@ -21,16 +21,5 @@ export class SearchResultPage extends BasePage {
         return items;
     }
 
-    // async navigateToSignInPage(): Promise<void> {   searchResultsLocator
-    //     await this.locators.navigateToSighnInPageLocator.click();
-    // }
-
-    // async isSignOutVisible(): Promise<boolean> {
-    //     return await this.locators.signOutPageLocator.isVisible();
-    // }
-
-    // async inputSearchMessage(searchMessage: string): Promise<void> {
-    //     await this.locators.searchFieldLocator.fill(searchMessage);
-    //     await this.locators.searchFieldLocator.press('Enter');
-    // }
+    
 }

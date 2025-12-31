@@ -22,7 +22,7 @@ export class AccessoriesPage extends BasePage {
     };
 
     async getCeramicAccessoriesCount(): Promise<number> {
-        await expect( this.locators.countCeramicAccessoriesLocator
+        await expect(this.locators.countCeramicAccessoriesLocator
         ).toHaveCount(4, { timeout: 2000 });
 
         return this.locators.countCeramicAccessoriesLocator.count();
@@ -37,11 +37,11 @@ export class AccessoriesPage extends BasePage {
     };
 
     async getSearchResultItemsCount(): Promise<number> {
-        await expect( this.locators.countProductItemsLocator
+        await expect(this.locators.countProductItemsLocator
         ).toHaveCount(11, { timeout: 3000 });
 
         return this.locators.countProductItemsLocator.count();
     };
-    
+
 
 }

@@ -16,5 +16,5 @@ export class ProductDetailsPage extends BasePage {
     async getProductName(): Promise<string> {
         return (await this.locators.productNameLocator.innerText()).toLowerCase();
     };
-    
+
 }
