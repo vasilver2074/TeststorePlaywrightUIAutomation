@@ -22,5 +22,13 @@ export class ProductDetailsPageLocators extends BasePageLocators {
         '#main > .row.product-container.js-product-container > :nth-child(2) > h1'
     );
 
+    readonly addToCartButtonLocator: Locator = this.baseLocator.getByRole(
+        'button', { 
+        name: ' Add to cart' 
+    });
 
+    readonly proceedToCheckoutButtonLocator: Locator = this.baseLocator.getByRole(
+        'link', { 
+        name: ' Proceed to checkout' 
+    });
 }

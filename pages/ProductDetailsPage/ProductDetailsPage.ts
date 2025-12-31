@@ -13,8 +13,21 @@ export class ProductDetailsPage extends BasePage {
         this.page.locator('#wrapper')
     );
 
+    readonly locators1: ProductDetailsPageLocators = new ProductDetailsPageLocators(
+        this.page.locator('.modal-content')
+    );
+
     async getProductName(): Promise<string> {
         return (await this.locators.productNameLocator.innerText()).toLowerCase();
+    };
+
+    async addToCart(): Promise<void> {
+        await this.locators.addToCartButtonLocator.click();
+    };
+
+    async proceedToCheckout(): Promise<void> {
+        await this.locators1.proceedToCheckoutButtonLocator.waitFor({timeout: 2000});
+        await this.locators1.proceedToCheckoutButtonLocator.click();
     };
 
 }

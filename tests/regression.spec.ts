@@ -173,32 +173,89 @@ test.describe("Teststore UI Playwright automation", () => {
     {
       tag: ["@regression, @positive"]
     },
-    async ({ mainPage, accessoriesPage }) => {
+    async ({ mainPage, productDetailsPage, shoppingCartPage }) => {
 
       await test.step('User navigates to Accessories page', async () => {
-        await mainPage.hoverProduct();
+        await mainPage.chooseProduct();
+      });
+
+      await test.step('User clicks on Add to Cart button', async () => {
+        await productDetailsPage.addToCart();
+      });
+
+      await test.step('User clicks on Proceed to Checkout button', async () => {
+        await productDetailsPage.proceedToCheckout();
+      });
+
+      await test.step('User clicks on Raise Count button', async () => {
+        await shoppingCartPage.tapRaiseCount();
       });
 
       await test.step('Verify that after resets all filters Product items count is equal to 11', async () => {
-        expect(await mainPage.isQuickViewModalVisible()).toBe(true);
+        expect(await shoppingCartPage.getCountValue()).toBe('2 items');
       });
 
-      // await page.locator('#quickview-modal-1-1').getByRole('heading', { name: 'Hummingbird printed t-shirt' }).click();
+      // await test.step('User clicks on Reduction Count button', async () => {
+      //   await shoppingCartPage.tapReductionCount();
+      // });
 
+      // await test.step('Verify that after resets all filters Product items count is equal to 11', async () => {
+      //   expect(await shoppingCartPage.getCountValue()).toBe('1 item');
+      // });
+    });
 
+  test('TS-010 User verified hover on Product and Quick view popup works correctly ',
+    {
+      tag: ["@regression, @positive"]
+    },
+    async ({ mainPage, productDetailsPage, shoppingCartPage }) => {
 
-      // await page.getByText('Size: M').click();
-      // await page.getByLabel('Size').selectOption('1');
-      // await page.getByText('Size: S').click();
-      // await page.getByRole('radio', { name: 'White' }).check();
-      // await page.getByText('Color: White').click();
-      // await page.getByRole('radio', { name: 'Black' }).check();
-      // await page.getByRole('button').first().click();
-      // await page.getByRole('spinbutton', { name: 'Quantity' }).click();
-      // await page.getByRole('button', { name: 'favorite_border' }).click();
-      // await page.getByRole('button', { name: 'Close' }).click();
-      // await page.getByRole('button', { name: ' Add to cart' }).click();
-      // await page.getByRole('button', { name: 'Close' }).click();
-      // await page.getByRole('button', { name: 'Close' }).click()
+      await test.step('User navigates to Accessories page', async () => {
+        await mainPage.chooseProduct();
+      });
+
+      await test.step('User clicks on Add to Cart button', async () => {
+        await productDetailsPage.addToCart();
+      });
+
+      await test.step('User clicks on Proceed to Checkout button', async () => {
+        await productDetailsPage.proceedToCheckout();
+      });
+
+      // await page.getByRole('link', { name: ' Proceed to checkout' }).click();
+      // await page.getByRole('link', { name: 'Proceed to checkout' }).click();
+      // await page.getByRole('textbox', { name: 'Alias' }).click();
+      // await page.getByRole('textbox', { name: 'Alias' }).fill('sdasdsd');
+      // await page.getByRole('textbox', { name: 'Company' }).click();
+      // await page.getByRole('textbox', { name: 'Company' }).fill('asdasdasdsds');
+      // await page.getByRole('textbox', { name: 'Address', exact: true }).click();
+      // await page.getByRole('textbox', { name: 'Address', exact: true }).fill('sdasdsdasd');
+      // await page.getByRole('textbox', { name: 'Address Complement' }).click();
+      // await page.getByRole('textbox', { name: 'Address Complement' }).fill('asdasdasd');
+      // await page.getByRole('textbox', { name: 'City' }).click();
+      // await page.getByRole('textbox', { name: 'City' }).fill('sdadsd');
+      // await page.getByLabel('State').selectOption('6');
+      // await page.getByRole('textbox', { name: 'Zip/Postal Code' }).click();
+      // await page.getByRole('textbox', { name: 'Zip/Postal Code' }).fill('14568');
+      // await page.getByRole('textbox', { name: 'Phone' }).click();
+      // await page.getByRole('textbox', { name: 'Phone' }).fill('+380971388687');
+      // await page.getByRole('button', { name: 'Continue' }).click();
+      // await page.getByRole('button', { name: 'Continue' }).click();
+
+      // await test.step('User clicks on Raise Count button', async () => {
+      //   await shoppingCartPage.tapRaiseCount();
+      // });
+
+      // await test.step('Verify that after resets all filters Product items count is equal to 11', async () => {
+      //   expect(await shoppingCartPage.getCountValue()).toBe('2 items');
+      // });
+
+      // await test.step('User clicks on Reduction Count button', async () => {
+      //   await shoppingCartPage.tapReductionCount();
+      // });
+
+      // await test.step('Verify that after resets all filters Product items count is equal to 11', async () => {
+      //   expect(await shoppingCartPage.getCountValue()).toBe('1 item');
+      // });
     });
 });

@@ -4,6 +4,7 @@ import { MainPage } from '../pages/MainPage/MainPage';
 import { SearchResultPage } from '../pages/SearchResultPage/SearchResultPage';
 import { AccessoriesPage } from '../pages/AccessoriesPage/AccessoriesPage';
 import { ProductDetailsPage } from '../pages/ProductDetailsPage/ProductDetailsPage';
+import { ShoppingCartPage } from '../pages/ShoppingCartPage/ShoppingCartPage';
 
 type Pages = {
     loginPage: LoginPage;
@@ -11,6 +12,7 @@ type Pages = {
     searchResultPage: SearchResultPage;
     accessoriesPage: AccessoriesPage;
     productDetailsPage: ProductDetailsPage;
+    shoppingCartPage: ShoppingCartPage;
     beforeFixture: void;
 }
 
@@ -39,6 +41,11 @@ export const test = base.extend<Pages>({
     productDetailsPage: async ({ page }, use) => {
         const productDetailsPage = new ProductDetailsPage(page);
         await use(productDetailsPage);
+    },
+
+    shoppingCartPage: async ({ page }, use) => {
+        const shoppingCartPage = new ShoppingCartPage(page);
+        await use(shoppingCartPage);
     },
 
     beforeFixture: async ({ mainPage, loginPage }, use) => {
