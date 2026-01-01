@@ -15,7 +15,10 @@ export class ShoppingCartPageLocators extends BasePageLocators {
         'button'
     ).nth(1);
 
-
+    readonly proceedToCheckoutButtonLocator: Locator = this.baseLocator.getByRole(
+        'link', { 
+        name: 'Proceed to checkout' 
+    });
 
     // await page.getByRole('button').first().click();
       // await page.getByText('items').click();

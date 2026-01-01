@@ -169,13 +169,13 @@ test.describe("Teststore UI Playwright automation", () => {
       });
     });
 
-  test('TS-009 User verified hover on Product and Quick view popup works correctly ',
+  test('TS-009 User verified  Product was added to Shopping Cart and Raise/Reduction Count buttons work correctly ',
     {
       tag: ["@regression, @positive"]
     },
     async ({ mainPage, productDetailsPage, shoppingCartPage }) => {
 
-      await test.step('User navigates to Accessories page', async () => {
+      await test.step('User choose Product', async () => {
         await mainPage.chooseProduct();
       });
 
@@ -191,7 +191,7 @@ test.describe("Teststore UI Playwright automation", () => {
         await shoppingCartPage.tapRaiseCount();
       });
 
-      await test.step('Verify that after resets all filters Product items count is equal to 11', async () => {
+      await test.step('Verify that after raising count the items count is equal to 2', async () => {
         expect(await shoppingCartPage.getCountValue()).toBe('2 items');
       });
 
@@ -204,13 +204,13 @@ test.describe("Teststore UI Playwright automation", () => {
       // });
     });
 
-  test('TS-010 User verified hover on Product and Quick view popup works correctly ',
+  test('TS-010 User verified Product order was placed successfully',
     {
       tag: ["@regression, @positive"]
     },
-    async ({ mainPage, productDetailsPage, shoppingCartPage }) => {
+    async ({ mainPage, productDetailsPage, shoppingCartPage, orderPage }) => {
 
-      await test.step('User navigates to Accessories page', async () => {
+      await test.step('User choose Product', async () => {
         await mainPage.chooseProduct();
       });
 
@@ -222,40 +222,29 @@ test.describe("Teststore UI Playwright automation", () => {
         await productDetailsPage.proceedToCheckout();
       });
 
-      // await page.getByRole('link', { name: ' Proceed to checkout' }).click();
-      // await page.getByRole('link', { name: 'Proceed to checkout' }).click();
-      // await page.getByRole('textbox', { name: 'Alias' }).click();
-      // await page.getByRole('textbox', { name: 'Alias' }).fill('sdasdsd');
-      // await page.getByRole('textbox', { name: 'Company' }).click();
-      // await page.getByRole('textbox', { name: 'Company' }).fill('asdasdasdsds');
-      // await page.getByRole('textbox', { name: 'Address', exact: true }).click();
-      // await page.getByRole('textbox', { name: 'Address', exact: true }).fill('sdasdsdasd');
-      // await page.getByRole('textbox', { name: 'Address Complement' }).click();
-      // await page.getByRole('textbox', { name: 'Address Complement' }).fill('asdasdasd');
-      // await page.getByRole('textbox', { name: 'City' }).click();
-      // await page.getByRole('textbox', { name: 'City' }).fill('sdadsd');
-      // await page.getByLabel('State').selectOption('6');
-      // await page.getByRole('textbox', { name: 'Zip/Postal Code' }).click();
-      // await page.getByRole('textbox', { name: 'Zip/Postal Code' }).fill('14568');
-      // await page.getByRole('textbox', { name: 'Phone' }).click();
-      // await page.getByRole('textbox', { name: 'Phone' }).fill('+380971388687');
-      // await page.getByRole('button', { name: 'Continue' }).click();
-      // await page.getByRole('button', { name: 'Continue' }).click();
+      await test.step('User clicks on Proceed to Checkout button', async () => {
+        await shoppingCartPage.proceedToCheckout();
+      });
 
-      // await test.step('User clicks on Raise Count button', async () => {
-      //   await shoppingCartPage.tapRaiseCount();
-      // });
+      await test.step('User fills in Order form', async () => {
+        await orderPage.fillOrderForm(
+          process.env.ALIAS!,
+          process.env.COMPANY!,
+          process.env.ADDRESS!,
+          process.env.ADDRESS_COMPLEMENT!,
+          process.env.CITY!,
+          "6",
+          process.env.ZIP_CODE!,
+          process.env.MOBILE_PHONE!
+        );
+      });
 
-      // await test.step('Verify that after resets all filters Product items count is equal to 11', async () => {
-      //   expect(await shoppingCartPage.getCountValue()).toBe('2 items');
-      // });
+      await test.step('User clicks on Continue button', async () => {
+        await orderPage.clickContinueButton();
+      });
 
-      // await test.step('User clicks on Reduction Count button', async () => {
-      //   await shoppingCartPage.tapReductionCount();
-      // });
-
-      // await test.step('Verify that after resets all filters Product items count is equal to 11', async () => {
-      //   expect(await shoppingCartPage.getCountValue()).toBe('1 item');
-      // });
+      await test.step('Verify that after order form is filled Personal Information text is visible', async () => {
+        expect(await orderPage.getPersonalInformationText()).toContain('PERSONAL INFORMATION');
+      });
     });
 });

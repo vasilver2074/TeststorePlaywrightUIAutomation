@@ -12,15 +12,6 @@ export class ShoppingCartPage extends BasePage {
         this.page.locator('#wrapper')
     );
 
-      // await page.getByRole('button').first().click();
-      // await page.getByText('items').click();
-      // await page.getByRole('button').nth(1).click();
-      // await page.getByText('1 item').click();
-
-    // async getProductName(): Promise<string> {
-    //     return (await this.locators.productNameLocator.innerText()).toLowerCase();
-    // };
-
     async tapRaiseCount(): Promise<void> {
         await this.locators.raiseCountButtonLocator.click();
     };
@@ -34,9 +25,8 @@ export class ShoppingCartPage extends BasePage {
         return await this.locators.getCountValueLocator.innerText();
     }
 
-    // async proceedToCheckout(): Promise<void> {
-    //     await this.locators1.proceedToCheckoutButtonLocator.waitFor({timeout: 2000});
-    //     await this.locators1.proceedToCheckoutButtonLocator.click();
-    // };
+    async proceedToCheckout(): Promise<void> {
+        await this.locators.proceedToCheckoutButtonLocator.click();
+    };
 
 }
