@@ -1,7 +1,7 @@
 import { Page } from "@playwright/test";
 import { BasePage } from "../BasePage/BasePage";
 import { ProductDetailsPageLocators } from "./ProductDetailsPageLocators";
-import { HeaderComponent } from "../components/HeaderComponent/HeaderComponent";
+import { step } from "../../helpers/decoracors/step";
 
 export class ProductDetailsPage extends BasePage {
 
@@ -17,17 +17,19 @@ export class ProductDetailsPage extends BasePage {
         this.page.locator('.modal-content')
     );
 
+    @step("Get Product Name")
     async getProductName(): Promise<string> {
         return (await this.locators.productNameLocator.innerText()).toLowerCase();
     };
 
+    @step("Add To Cart")
     async addToCart(): Promise<void> {
         await this.locators.addToCartButtonLocator.click();
     };
 
+    @step("Proceed To Checkout")
     async proceedToCheckout(): Promise<void> {
-        await this.locators1.proceedToCheckoutButtonLocator.waitFor({timeout: 2000});
+        await this.locators1.proceedToCheckoutButtonLocator.waitFor({timeout: 3000});
         await this.locators1.proceedToCheckoutButtonLocator.click();
     };
-
 }

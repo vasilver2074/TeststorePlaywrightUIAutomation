@@ -20,25 +20,14 @@ test.describe("Teststore UI Playwright automation Accessories functionality", ()
         tag: ["@regression, @positive"]
       },
       async ({ mainPage, accessoriesPage, productDetailsPage }) => {
-        await test.step('User navigates to Accessories page', async () => {
+        
           await mainPage.navigateToAccessoriesPage()
-        });
-
-        await test.step('User tap Home Accessories checkbox', async () => {
-          await accessoriesPage.clickHomeAccessories();
-        });
-
-        await test.step('User tap Ceramic checkbox', async () => {
-          await accessoriesPage.clickCeramic();
-        });
-
-        await test.step('User click Product Item', async () => {
+          await accessoriesPage.clickHomeAccessories();       
+          await accessoriesPage.clickCeramic();      
           await accessoriesPage.clickProductItem(product.name);
-        });
-
-        await test.step('Verify that Product name in Product icon is equals in Product Details page', async () => {
+       
           expect(await productDetailsPage.getProductName()).toContain(`${product.name.toLowerCase()}`);
-        });
+        
       });
   }
 });

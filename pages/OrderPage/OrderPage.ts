@@ -1,6 +1,7 @@
 import { Page } from "@playwright/test";
 import { BasePage } from "../BasePage/BasePage";
 import { OrderPageLocators } from "./OrderPageLocators";
+import { step } from "../../helpers/decoracors/step";
 
 export class OrderPage extends BasePage {
 
@@ -48,6 +49,7 @@ export class OrderPage extends BasePage {
         await this.locators.continueButtonLocator.click();
     };
 
+    @step("Fill Order Form")
     async fillOrderForm(alias: string, company: string, address: string, addressComplement: string, city: string, stateValue: string, zipPostalCode: string, phone: string): Promise<void> {
         await this.fillAlias(alias);
         await this.fillCompany(company);
@@ -59,10 +61,11 @@ export class OrderPage extends BasePage {
         await this.fillPhone(phone);
     };
 
+    @step("Get Personal Information Text")
     async getPersonalInformationText(): Promise<string> {
         await this.page.waitForLoadState('networkidle');
         await this.locators.personalInformationLocator.waitFor({ state: 'visible' });
         return await this.locators.personalInformationLocator.innerText();
-    }
+    };
 
 }

@@ -1,6 +1,7 @@
 import { Locator, Page } from "@playwright/test";
 import { BasePage } from "../BasePage/BasePage";
 import { LoginPageLocators } from "./LoginPageLocators";
+import { step } from "../../helpers/decoracors/step";   
 
 export class LoginPage extends BasePage {
 
@@ -12,14 +13,17 @@ export class LoginPage extends BasePage {
         this.page.locator('#login-form')
     );
 
+    @step("Fill in Email field")
     async fillEmail(email: string): Promise<void> {
         await this.locators.emailInputLocator.fill(email);
     }
 
+    @step("Fill in Password field")
     async fillPassword(password: string): Promise<void> {
         await this.locators.passwordInputLocator.fill(password);
     }
 
+    @step("Click Login button")
     async clickLogin(): Promise<void> {
         await this.locators.signInButtonLocator.click();
     }
