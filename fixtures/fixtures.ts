@@ -14,7 +14,7 @@ type Pages = {
     accessoriesPage: AccessoriesPage;
     productDetailsPage: ProductDetailsPage;
     shoppingCartPage: ShoppingCartPage;
-    orderPage: OrderPage
+    orderPage: OrderPage;
     beforeFixture: void;
 }
 
@@ -55,12 +55,15 @@ export const test = base.extend<Pages>({
         await use(orderPage);
     },
 
-    beforeFixture: async ({ mainPage, loginPage }, use) => {
+    beforeFixture: async ({ mainPage, loginPage, context, page }, use) => {
         await mainPage.navigate(process.env.BASE_URL!);
         await mainPage.navigateToSignInPage();
         await loginPage.fillEmail(process.env.EMAIL!);
         await loginPage.fillPassword(process.env.PASSWORD!);
         await loginPage.clickLogin();
+        //await page.waitForLoadState('networkidle');
+        await page.waitForTimeout(3000);
+        await context.storageState({ path: './storageState.json' });
         await use();
     }
 })
