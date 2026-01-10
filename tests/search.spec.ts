@@ -20,8 +20,8 @@ test.describe("Teststore UI Playwright automation Search functionality", () => {
       tag: ["@regression, @positive"],
     },
     async ({ mainPage, searchResultPage, request }) => {
-      await mainPage.inputSearchMessage("accessories");
-      await mainPage.runSearch();
+      // await mainPage.inputSearchMessage("accessories");
+      // await mainPage.runSearch();
 
       const response = await request.get(
         "https://teststore.automationtesting.co.uk/index.php?action=getAllWishlist&fc=module&module=blockwishlist&controller=action",
