@@ -1,0 +1,25 @@
+{
+  // === Форматування ===
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+
+  // === ESLint ===
+  "eslint.enable": true,
+  "eslint.useFlatConfig": true,
+  "eslint.validate": [
+    "javascript",
+    "typescript"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  // === TypeScript ===
+  "typescript.preferences.importModuleSpecifier": "relative",
+
+  // === Файли ===
+  "files.eol": "\n",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true
+}

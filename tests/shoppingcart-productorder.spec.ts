@@ -13,25 +13,13 @@ test.describe("Teststore UI Playwright automation", () => {
     },
     async ({ mainPage, productDetailsPage, shoppingCartPage }) => {
 
-      await test.step('User choose Product', async () => {
         await mainPage.chooseProduct();
-      });
-
-      await test.step('User clicks on Add to Cart button', async () => {
-        await productDetailsPage.addToCart();
-      });
-
-      await test.step('User clicks on Proceed to Checkout button', async () => {
+        await productDetailsPage.addToCart();     
         await productDetailsPage.proceedToCheckout();
-      });
-
-      await test.step('User clicks on Raise Count button', async () => {
         await shoppingCartPage.tapRaiseCount();
-      });
-
-      await test.step('Verify that after raising count the items count is equal to 2', async () => {
+    
         expect(await shoppingCartPage.getCountValue()).toBe('2 items');
-      });
+     
 
       // await test.step('User clicks on Reduction Count button', async () => {
       //   await shoppingCartPage.tapReductionCount();
