@@ -1,7 +1,7 @@
-import { Page } from "@playwright/test";
-import { BasePage } from "../BasePage/BasePage";
-import { ShoppingCartPageLocators } from "./ShoppingCartPageLocators";
-import { step } from "../../helpers/decorators/step";
+import { Page } from '@playwright/test';
+import { BasePage } from '../BasePage/BasePage';
+import { ShoppingCartPageLocators } from './ShoppingCartPageLocators';
+import { step } from '../../helpers/decorators/step';
 
 export class ShoppingCartPage extends BasePage {
   constructor(page: Page) {
@@ -9,26 +9,26 @@ export class ShoppingCartPage extends BasePage {
   }
 
   readonly locators: ShoppingCartPageLocators = new ShoppingCartPageLocators(
-    this.page.locator("#wrapper")
+    this.page.locator('#wrapper')
   );
 
-  @step("Tap Raise Count Button")
+  @step('Tap Raise Count Button')
   async tapRaiseCount(): Promise<void> {
     await this.locators.raiseCountButtonLocator.click();
   }
 
-  @step("Tap Reduction Count Button")
+  @step('Tap Reduction Count Button')
   async tapReductionCount(): Promise<void> {
     await this.locators.reductionCountButtonLocator.click();
   }
 
-  @step("Get Count Value")
+  @step('Get Count Value')
   async getCountValue(): Promise<string> {
-    await this.page.waitForLoadState("networkidle");
+    await this.page.waitForLoadState('networkidle');
     return await this.locators.getCountValueLocator.innerText();
   }
 
-  @step("Proceed To Checkout")
+  @step('Proceed To Checkout')
   async proceedToCheckout(): Promise<void> {
     await this.locators.proceedToCheckoutButtonLocator.click();
   }

@@ -1,16 +1,14 @@
-import { Page } from "@playwright/test";
-import { BasePage } from "../BasePage/BasePage";
-import { OrderPageLocators } from "./OrderPageLocators";
-import { step } from "../../helpers/decorators/step";
+import { Page } from '@playwright/test';
+import { BasePage } from '../BasePage/BasePage';
+import { OrderPageLocators } from './OrderPageLocators';
+import { step } from '../../helpers/decorators/step';
 
 export class OrderPage extends BasePage {
   constructor(page: Page) {
     super(page);
   }
 
-  readonly locators: OrderPageLocators = new OrderPageLocators(
-    this.page.locator("#wrapper")
-  );
+  readonly locators: OrderPageLocators = new OrderPageLocators(this.page.locator('#wrapper'));
 
   async fillAlias(alias: string): Promise<void> {
     await this.locators.aliasLocator.fill(alias);
@@ -48,7 +46,7 @@ export class OrderPage extends BasePage {
     await this.locators.continueButtonLocator.click();
   }
 
-  @step("Fill Order Form")
+  @step('Fill Order Form')
   async fillOrderForm(
     alias: string,
     company: string,
@@ -69,11 +67,11 @@ export class OrderPage extends BasePage {
     await this.fillPhone(phone);
   }
 
-  @step("Get Personal Information Text")
+  @step('Get Personal Information Text')
   async getPersonalInformationText(): Promise<string> {
-    await this.page.waitForLoadState("networkidle");
+    await this.page.waitForLoadState('networkidle');
     await this.locators.personalInformationLocator.waitFor({
-      state: "visible",
+      state: 'visible',
     });
     return await this.locators.personalInformationLocator.innerText();
   }
