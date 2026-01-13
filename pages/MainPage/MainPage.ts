@@ -21,8 +21,8 @@ export class MainPage extends BasePage {
   }
 
   @step("Check Sign Out visibility in Header Component")
-  async isSignOutVisible(): Promise<boolean> {
-    return await this.headerComponent.isSignOutVisible();
+  async isSignOutVisible(): Promise<void> {
+    await this.headerComponent.isSignOutVisible();
   }
 
   @step("Input search message in Header Component")

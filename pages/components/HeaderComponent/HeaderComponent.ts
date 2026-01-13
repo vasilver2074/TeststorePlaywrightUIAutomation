@@ -51,7 +51,7 @@ export class HeaderComponent extends BaseComponentsPage {
   }
 
   @step("Is Sign Out Visible")
-  async isSignOutVisible(): Promise<boolean> {
-    return this.locators.signOutPageLocator.isVisible();
+  async isSignOutVisible(): Promise<void> {
+    await expect(this.locators.signOutPageLocator).toContainText("Sign out");
   }
 }
