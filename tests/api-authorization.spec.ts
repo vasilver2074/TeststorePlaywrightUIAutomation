@@ -6,10 +6,10 @@ test.describe("Teststore API Playwright authorization functionality", () => {
     {
       tag: ["@regression, @positive"],
     },
-    async ({ page, mainPage }) => {
+    async ({ authApi, mainPage }) => {
 
-      await page.goto("https://teststore.automationtesting.co.uk/index.php");
-      await page.waitForTimeout(3_000);
+      await authApi.goto("https://teststore.automationtesting.co.uk/index.php");
+      await authApi.waitForTimeout(5_000);
 
       await mainPage.isSignOutVisible();
     }

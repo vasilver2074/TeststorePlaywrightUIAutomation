@@ -26,7 +26,7 @@ export class HeaderComponentLocators extends BasePageLocators {
 
     readonly signOutPageLocator: Locator = this.baseLocator.getByRole(
         'link',
-        { name: ' Sign out' }
+        { name: 'Sign out' }
     );
 
     readonly accessoriesLinkLocator: Locator = this.baseLocator.getByRole(

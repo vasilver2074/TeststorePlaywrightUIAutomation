@@ -1,4 +1,4 @@
-import { test as base, expect } from '@playwright/test';
+import { test as base, expect, Page } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage/LoginPage';
 import { MainPage } from '../pages/MainPage/MainPage';
 import { SearchResultPage } from '../pages/SearchResultPage/SearchResultPage';
@@ -16,7 +16,7 @@ type Pages = {
     shoppingCartPage: ShoppingCartPage;
     orderPage: OrderPage;
     beforeFixture: void;
-    page: void;
+    authApi: Page;
 }
 
 export const test = base.extend<Pages>({
@@ -68,7 +68,7 @@ export const test = base.extend<Pages>({
         await use();
     },
 
-    page: async ({ request, browser }, use) => {
+    authApi: async ({ request, browser }, use) => {
         const response = await request.post(
           'https://teststore.automationtesting.co.uk/index.php?controller=authentication?back=https%3A%2F%2Fteststore.automationtesting.co.uk%2Findex.php%3Fcontroller%3Dsearch%26s%3Daccessories',
           {
