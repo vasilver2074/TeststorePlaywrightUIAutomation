@@ -7,10 +7,39 @@ on:
   schedule:
     - cron: '0 5 * * 1-5'  # Weekly on Sundays at midnight
   workflow_dispatch:
+    inputs: # Налаштування вхідних параметрів для користувацького запуску
+      base_url:
+        description: 'Base URL for tests'
+        required: true
+        default: 'https://teststore.automationtesting.co.uk/index.php'
+      workers:
+        description: 'Number of test workers'
+        required: false
+        default: '2'
+      runtest:
+        description: "what tests you want to run? Default: all-tests"
+        type: choice
+        required: true
+        default: "all-tests"
+        options:
+          - rztk
+          - coffee-cart
+          - content-operation
+          - condulit
+
+permissions:
+  id-token: write
+  contents: read
+  checks: write
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    env:
+      PASSWORD: 147852
+      CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+      BASE_URL: ${{ github.event.inputs.base_url || 'https://teststore.automationtesting.co.uk/index.php' }}
+      WORKERS: ${{ github.event.inputs.workers || '2' }}
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
