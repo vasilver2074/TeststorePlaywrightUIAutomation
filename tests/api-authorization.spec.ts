@@ -1,3 +1,4 @@
+import { expect } from '@playwright/test';
 import { test } from '../fixtures/fixtures';
 
 test.describe('Teststore API Playwright authorization functionality', () => {
@@ -6,11 +7,13 @@ test.describe('Teststore API Playwright authorization functionality', () => {
     {
       tag: ['@regression, @positive'],
     },
-    async ({ authApi, mainPage }) => {
-      await authApi.goto('https://teststore.automationtesting.co.uk/index.php');
-      await authApi.waitForTimeout(5_000);
+    async ({ authApi }) => {
+      await authApi.goto(
+        'https://teststore.automationtesting.co.uk/index.php?controller=my-account'
+      );
 
-      await mainPage.isSignOutVisible();
+      await expect(authApi).toHaveURL(/my-account/);
+      await expect(authApi.locator('a.logout')).toBeVisible();
     }
   );
 });
