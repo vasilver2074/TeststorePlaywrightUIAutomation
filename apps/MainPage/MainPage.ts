@@ -23,6 +23,11 @@ export class MainPage extends BasePage {
     await this.headerComponent.isSignOutVisible();
   }
 
+  @step('Check Navigation Links visibility in Header Component')
+  async isNavigationLinksVisible(): Promise<void> {
+    await this.headerComponent.isNavigationLinksVisible();
+  }
+
   @step('Input search message in Header Component')
   async inputSearchMessage(searchMessage: string): Promise<void> {
     await this.headerComponent.inputSearchMessage(searchMessage);

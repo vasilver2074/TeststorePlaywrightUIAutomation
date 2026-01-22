@@ -1,11 +1,11 @@
 import { test as base, expect, Page } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage/LoginPage';
-import { MainPage } from '../pages/MainPage/MainPage';
-import { SearchResultPage } from '../pages/SearchResultPage/SearchResultPage';
-import { AccessoriesPage } from '../pages/AccessoriesPage/AccessoriesPage';
-import { ProductDetailsPage } from '../pages/ProductDetailsPage/ProductDetailsPage';
-import { ShoppingCartPage } from '../pages/ShoppingCartPage/ShoppingCartPage';
-import { OrderPage } from '../pages/OrderPage/OrderPage';
+import { LoginPage } from '../apps/LoginPage/LoginPage';
+import { MainPage } from '../apps/MainPage/MainPage';
+import { SearchResultPage } from '../apps/SearchResultPage/SearchResultPage';
+import { AccessoriesPage } from '../apps/AccessoriesPage/AccessoriesPage';
+import { ProductDetailsPage } from '../apps/ProductDetailsPage/ProductDetailsPage';
+import { ShoppingCartPage } from '../apps/ShoppingCartPage/ShoppingCartPage';
+import { OrderPage } from '../apps/OrderPage/OrderPage';
 
 type Pages = {
   loginPage: LoginPage;

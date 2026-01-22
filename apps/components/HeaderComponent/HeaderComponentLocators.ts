@@ -23,4 +23,14 @@ export class HeaderComponentLocators extends BasePageLocators {
     name: 'Accessories',
     exact: true,
   });
+
+  readonly clothesLinkLocator: Locator = this.baseLocator.getByRole('link', {
+    name: 'Clothes',
+    exact: true,
+  });
+
+  readonly artLinkLocator: Locator = this.baseLocator.getByRole('link', {
+    name: 'Art',
+    exact: true,
+  });
 }

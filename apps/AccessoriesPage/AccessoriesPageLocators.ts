@@ -1,5 +1,5 @@
 import { Locator } from '@playwright/test';
-import { BasePageLocators } from "../BasePage/BasePageLocators";
+import { BasePageLocators } from '../BasePage/BasePageLocators';
 
 export class AccessoriesPageLocators extends BasePageLocators {
   readonly homeAccessoriesLocator: Locator = this.baseLocator

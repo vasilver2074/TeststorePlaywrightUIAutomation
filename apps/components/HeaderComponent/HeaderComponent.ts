@@ -51,4 +51,11 @@ export class HeaderComponent extends BaseComponentsPage {
   async isSignOutVisible(): Promise<void> {
     await expect(this.locators.signOutPageLocator).toContainText('Sign out');
   }
+
+  @step('Is Navigation Links Visible')
+  async isNavigationLinksVisible(): Promise<void> {
+    await expect(this.locators.accessoriesLinkLocator).toContainText('Accessories');
+    await expect(this.locators.clothesLinkLocator).toContainText('Clothes');
+    await expect(this.locators.artLinkLocator).toContainText('Art');
+  }
 }
