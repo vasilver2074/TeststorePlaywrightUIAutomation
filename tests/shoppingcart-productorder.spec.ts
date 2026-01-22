@@ -2,6 +2,16 @@ import { expect } from '@playwright/test';
 import { test } from '../fixtures/fixtures';
 
 test.describe('Teststore UI Playwright automation', () => {
+  const orderInformation = {
+    alias: 'Ghost',
+    company: 'Black Rock',
+    address: 'Geroiv Praci 17',
+    addressComplement: 'Apartment 45',
+    city: 'Kharkiv',
+    zipCode: '14568',
+    mobilePhone: '+380971368697',
+  };
+
   test.beforeEach(async ({ loginPage, mainPage, beforeFixture }) => {});
 
   test(
@@ -39,14 +49,14 @@ test.describe('Teststore UI Playwright automation', () => {
       await shoppingCartPage.proceedToCheckout();
 
       await orderPage.fillOrderForm(
-        process.env.ALIAS!,
-        process.env.COMPANY!,
-        process.env.ADDRESS!,
-        process.env.ADDRESS_COMPLEMENT!,
-        process.env.CITY!,
+        orderInformation.alias,
+        orderInformation.company,
+        orderInformation.address,
+        orderInformation.addressComplement,
+        orderInformation.city,
         '6',
-        process.env.ZIP_CODE!,
-        process.env.MOBILE_PHONE!
+        orderInformation.zipCode,
+        orderInformation.mobilePhone
       );
 
       await orderPage.clickContinueButton();

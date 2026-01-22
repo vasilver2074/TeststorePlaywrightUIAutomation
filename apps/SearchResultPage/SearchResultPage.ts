@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import { expect, Page } from '@playwright/test';
 import { BasePage } from '../BasePage/BasePage';
 import { SearchResultPageLocators } from './SearchResultPageLocators';
 import { step } from '../../helpers/decorators/step';
@@ -13,8 +13,8 @@ export class SearchResultPage extends BasePage {
   );
 
   @step('Check Search Results visibility on Search Result Page')
-  async isSearchResultsVisible(): Promise<boolean> {
-    return await this.locators.searchResultsLocator.isVisible();
+  async isSearchResultsVisible(): Promise<void> {
+    await expect(this.locators.searchResultsLocator).toBeVisible();
   }
 
   @step('Get count of search result items on Search Result Page')

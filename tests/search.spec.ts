@@ -24,7 +24,7 @@ test.describe('Teststore UI Playwright automation Search functionality', () => {
       await mainPage.inputSearchMessage('accessories');
       await mainPage.runSearch();
 
-      expect(await searchResultPage.isSearchResultsVisible()).toBe(true);
+      await searchResultPage.isSearchResultsVisible();
       expect(await searchResultPage.getSearchResultItemsCount()).toBe(8);
     }
   );

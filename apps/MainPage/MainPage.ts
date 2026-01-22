@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import { expect, Page } from '@playwright/test';
 import { BasePage } from '../BasePage/BasePage';
 import { MainPageLocators } from './MainPageLocators';
 import { HeaderComponent } from '../components/HeaderComponent/HeaderComponent';
@@ -61,8 +61,8 @@ export class MainPage extends BasePage {
   }
 
   @step('Check Quick View modal visibility from Main Page')
-  async isQuickViewModalVisible(): Promise<boolean> {
+  async isQuickViewModalVisible(): Promise<void> {
     await this.locators.quickViewModalLocator.waitFor({ timeout: 3000 });
-    return await this.locators.quickViewModalLocator.isVisible();
+    await expect(this.locators.quickViewModalLocator).toBeVisible();
   }
 }

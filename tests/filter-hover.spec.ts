@@ -44,7 +44,7 @@ test.describe('Teststore UI Playwright automation filter and hover functionality
     async ({ mainPage }) => {
       await mainPage.hoverProduct();
 
-      expect(await mainPage.isQuickViewModalVisible()).toBe(true);
+      await mainPage.isQuickViewModalVisible();
     }
   );
 });
