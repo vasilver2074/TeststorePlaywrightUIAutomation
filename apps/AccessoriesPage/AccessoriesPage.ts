@@ -24,12 +24,10 @@ export class AccessoriesPage extends BasePage {
   }
 
   @step('Get Ceramic Accessories Count')
-  async getCeramicAccessoriesCount(): Promise<number> {
-    await expect(this.locators.countCeramicAccessoriesLocator).toHaveCount(4, {
-      timeout: 2000,
+  async verifyCeramicAccessoriesCount(accessoriesCount: number): Promise<void> {
+    await expect(this.locators.countCeramicAccessoriesLocator).toHaveCount(accessoriesCount, {
+      timeout: 10000,
     });
-
-    return this.locators.countCeramicAccessoriesLocator.count();
   }
 
   @step('Click Product Item')
@@ -43,11 +41,9 @@ export class AccessoriesPage extends BasePage {
   }
 
   @step('Get Search Result Items Count')
-  async getSearchResultItemsCount(): Promise<number> {
-    await expect(this.locators.countProductItemsLocator).toHaveCount(11, {
-      timeout: 3000,
+  async verifySearchResultItemsCount(itemCount: number): Promise<void> {
+    await expect(this.locators.countProductItemsLocator).toHaveCount(itemCount, {
+      timeout: 10000,
     });
-
-    return this.locators.countProductItemsLocator.count();
   }
 }

@@ -18,8 +18,9 @@ export class SearchResultPage extends BasePage {
   }
 
   @step('Get count of search result items on Search Result Page')
-  async getSearchResultItemsCount(): Promise<number> {
-    const items = await this.locators.countAccessoriesLocator.count();
-    return items;
+  async verifySearchResultItemsCount(itemCount: number): Promise<void> {
+    await expect(this.locators.countAccessoriesLocator).toHaveCount(itemCount, {
+      timeout: 10000,
+    });
   }
 }

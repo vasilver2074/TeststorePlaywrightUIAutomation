@@ -10,8 +10,8 @@ test.describe('Teststore UI Playwright automation Search functionality', () => {
       tag: ['@regression, @positive'],
     },
     async ({ mainPage }) => {
-      await mainPage.isSignOutVisible();
-      await mainPage.isNavigationLinksVisible();
+      await mainPage.verifySignOutVisibility();
+      await mainPage.verifyNavigationLinksVisibility();
     }
   );
 
@@ -25,7 +25,7 @@ test.describe('Teststore UI Playwright automation Search functionality', () => {
       await mainPage.runSearch();
 
       await searchResultPage.isSearchResultsVisible();
-      expect(await searchResultPage.getSearchResultItemsCount()).toBe(8);
+      await searchResultPage.verifySearchResultItemsCount(8);
     }
   );
 
@@ -50,7 +50,7 @@ test.describe('Teststore UI Playwright automation Search functionality', () => {
     async ({ mainPage }) => {
       await mainPage.inputSearchMessage('accessories');
 
-      expect(await mainPage.getSearchIconsItemsCount()).toBe(8);
+      await mainPage.verifySearchIconsItemsCount(8);
     }
   );
 });

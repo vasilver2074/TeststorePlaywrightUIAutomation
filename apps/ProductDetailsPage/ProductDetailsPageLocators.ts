@@ -21,8 +21,4 @@ export class ProductDetailsPageLocators extends BasePageLocators {
   readonly addToCartButtonLocator: Locator = this.baseLocator.getByRole('button', {
     name: ' Add to cart',
   });
-
-  readonly proceedToCheckoutButtonLocator: Locator = this.baseLocator.getByRole('link', {
-    name: ' Proceed to checkout',
-  });
 }

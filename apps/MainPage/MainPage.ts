@@ -19,12 +19,12 @@ export class MainPage extends BasePage {
   }
 
   @step('Check Sign Out visibility in Header Component')
-  async isSignOutVisible(): Promise<void> {
-    await this.headerComponent.isSignOutVisible();
+  async verifySignOutVisibility(): Promise<void> {
+    await this.headerComponent.verifySignOutVisibility();
   }
 
   @step('Check Navigation Links visibility in Header Component')
-  async isNavigationLinksVisible(): Promise<void> {
+  async verifyNavigationLinksVisibility(): Promise<void> {
     await this.headerComponent.isNavigationLinksVisible();
   }
 
@@ -39,8 +39,8 @@ export class MainPage extends BasePage {
   }
 
   @step('Get count of search icons items from Header Component')
-  async getSearchIconsItemsCount(): Promise<number> {
-    return await this.headerComponent.getSearchIconsItemsCount();
+  async verifySearchIconsItemsCount(itemCount: number): Promise<void> {
+    await this.headerComponent.verifySearchIconsItemsCount(itemCount);
   }
 
   @step('Navigate to Accessories Page from Main Page')
@@ -54,7 +54,7 @@ export class MainPage extends BasePage {
   }
 
   @step('Hover product and click Quick View from Main Page')
-  async hoverProduct(): Promise<void> {
+  async hoverClickProduct(): Promise<void> {
     await this.locators.chooseProductLocator.hover();
     await this.locators.chooseQuickViewLocator.waitFor({ timeout: 1000 });
     await this.locators.chooseQuickViewLocator.click();

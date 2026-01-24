@@ -19,21 +19,13 @@ test.describe('Teststore UI Playwright automation', () => {
     {
       tag: ['@regression, @positive'],
     },
-    async ({ mainPage, productDetailsPage, shoppingCartPage }) => {
+    async ({ mainPage, productDetailsPage, shoppingCartPage, proceedToCheckoutPage }) => {
       await mainPage.chooseProduct();
       await productDetailsPage.addToCart();
-      await productDetailsPage.proceedToCheckout();
+      await proceedToCheckoutPage.proceedToCheckout();
       await shoppingCartPage.tapRaiseCount();
 
-      expect(await shoppingCartPage.getCountValue()).toBe('2 items');
-
-      // await test.step('User clicks on Reduction Count button', async () => {
-      //   await shoppingCartPage.tapReductionCount();
-      // });
-
-      // await test.step('Verify that after resets all filters Product items count is equal to 11', async () => {
-      //   expect(await shoppingCartPage.getCountValue()).toBe('1 item');
-      // });
+      await shoppingCartPage.verifyCountValue('2 items');
     }
   );
 
@@ -42,10 +34,17 @@ test.describe('Teststore UI Playwright automation', () => {
     {
       tag: ['@regression, @positive'],
     },
-    async ({ mainPage, productDetailsPage, shoppingCartPage, orderPage }) => {
+    async ({
+      mainPage,
+      productDetailsPage,
+      shoppingCartPage,
+      proceedToCheckoutPage,
+      orderPage,
+      page,
+    }) => {
       await mainPage.chooseProduct();
       await productDetailsPage.addToCart();
-      await productDetailsPage.proceedToCheckout();
+      await proceedToCheckoutPage.proceedToCheckout();
       await shoppingCartPage.proceedToCheckout();
 
       await orderPage.fillOrderForm(
@@ -61,7 +60,9 @@ test.describe('Teststore UI Playwright automation', () => {
 
       await orderPage.clickContinueButton();
 
-      expect(await orderPage.getPersonalInformationText()).toContain('PERSONAL INFORMATION');
+      await expect(page.locator('#checkout-personal-information-step h1')).toContainText(
+        'Personal Information'
+      );
     }
   );
 });

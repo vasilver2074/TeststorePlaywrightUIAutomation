@@ -14,7 +14,7 @@ test.describe('Teststore UI Playwright automation filter and hover functionality
       await accessoriesPage.clickHomeAccessories();
       await accessoriesPage.clickCeramic();
 
-      expect(await accessoriesPage.getCeramicAccessoriesCount()).toBe(4);
+      await accessoriesPage.verifyCeramicAccessoriesCount(4);
     }
   );
 
@@ -28,11 +28,11 @@ test.describe('Teststore UI Playwright automation filter and hover functionality
       await accessoriesPage.clickHomeAccessories();
       await accessoriesPage.clickCeramic();
 
-      expect(await accessoriesPage.getCeramicAccessoriesCount()).toBe(4);
+      await accessoriesPage.verifyCeramicAccessoriesCount(4);
 
       await accessoriesPage.resetAllFilters();
 
-      expect(await accessoriesPage.getSearchResultItemsCount()).toBe(11);
+      await accessoriesPage.verifySearchResultItemsCount(11);
     }
   );
 
@@ -42,7 +42,7 @@ test.describe('Teststore UI Playwright automation filter and hover functionality
       tag: ['@regression, @positive'],
     },
     async ({ mainPage }) => {
-      await mainPage.hoverProduct();
+      await mainPage.hoverClickProduct();
 
       await mainPage.isQuickViewModalVisible();
     }

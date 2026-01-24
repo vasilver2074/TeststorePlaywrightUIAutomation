@@ -17,15 +17,17 @@ test.describe('Teststore UI Playwright automation Accessories functionality', ()
       {
         tag: ['@regression, @positive'],
       },
-      async ({ mainPage, accessoriesPage, productDetailsPage }) => {
+      async ({ mainPage, accessoriesPage, page }) => {
         await mainPage.navigateToAccessoriesPage();
         await accessoriesPage.clickHomeAccessories();
         await accessoriesPage.clickCeramic();
         await accessoriesPage.clickProductItem(product.name);
 
-        expect(await productDetailsPage.getProductName()).toContain(
-          `${product.name.toLowerCase()}`
-        );
+        await expect(
+          page.locator(
+            '#main > div.row.product-container.js-product-container > div:nth-child(2) > h1'
+          )
+        ).toContainText(`${product.name}`);
       }
     );
   }

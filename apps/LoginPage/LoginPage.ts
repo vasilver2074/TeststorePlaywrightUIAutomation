@@ -24,4 +24,11 @@ export class LoginPage extends BasePage {
   async clickLogin(): Promise<void> {
     await this.locators.signInButtonLocator.click();
   }
+
+  @step('Perform Login')
+  async performLogin(email: string, password: string): Promise<void> {
+    await this.fillEmail(email);
+    await this.fillPassword(password);
+    await this.clickLogin();
+  }
 }

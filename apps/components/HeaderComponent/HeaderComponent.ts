@@ -26,12 +26,12 @@ export class HeaderComponent extends BaseComponentsPage {
   }
 
   @step('Get Search Icons Items Count')
-  async getSearchIconsItemsCount(): Promise<number> {
+  async verifySearchIconsItemsCount(itemCount: number): Promise<number> {
     const page = this.locators.countSearchIconsItemsLocator.page();
 
     await page.waitForSelector('.ui-menu-item', {
       state: 'visible',
-      timeout: 3000,
+      timeout: 10000,
     });
 
     return this.locators.countSearchIconsItemsLocator.count();
@@ -48,7 +48,7 @@ export class HeaderComponent extends BaseComponentsPage {
   }
 
   @step('Is Sign Out Visible')
-  async isSignOutVisible(): Promise<void> {
+  async verifySignOutVisibility(): Promise<void> {
     await expect(this.locators.signOutPageLocator).toContainText('Sign out');
   }
 

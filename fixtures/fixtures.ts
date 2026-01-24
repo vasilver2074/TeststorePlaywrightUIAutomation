@@ -6,6 +6,7 @@ import { AccessoriesPage } from '../apps/AccessoriesPage/AccessoriesPage';
 import { ProductDetailsPage } from '../apps/ProductDetailsPage/ProductDetailsPage';
 import { ShoppingCartPage } from '../apps/ShoppingCartPage/ShoppingCartPage';
 import { OrderPage } from '../apps/OrderPage/OrderPage';
+import { ProceedToCheckoutPage } from '../apps/ProceedToCheckoutPage/ProceedToCheckoutPage';
 
 type Pages = {
   loginPage: LoginPage;
@@ -15,6 +16,7 @@ type Pages = {
   productDetailsPage: ProductDetailsPage;
   shoppingCartPage: ShoppingCartPage;
   orderPage: OrderPage;
+  proceedToCheckoutPage: ProceedToCheckoutPage;
   beforeFixture: void;
   authApi: Page;
 };
@@ -55,13 +57,15 @@ export const test = base.extend<Pages>({
     await use(orderPage);
   },
 
+  proceedToCheckoutPage: async ({ page }, use) => {
+    const proceedToCheckoutPage = new ProceedToCheckoutPage(page);
+    await use(proceedToCheckoutPage);
+  },
+
   beforeFixture: async ({ mainPage, loginPage, context, page }, use) => {
     await mainPage.navigate(process.env.BASE_URL!);
     await mainPage.navigateToSignInPage();
-    await loginPage.fillEmail(process.env.EMAIL!);
-    await loginPage.fillPassword(process.env.PASSWORD!);
-    await loginPage.clickLogin();
-    //await page.waitForLoadState('networkidle');
+    await loginPage.performLogin(process.env.EMAIL!, process.env.PASSWORD!);
     await page.waitForTimeout(3000);
     await context.storageState({ path: './storageState.json' });
     await use();
