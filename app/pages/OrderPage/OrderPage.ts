@@ -46,6 +46,10 @@ export class OrderPage extends BasePage {
     await this.locators.continueButtonLocator.click();
   }
 
+  async clickDeleteButton(): Promise<void> {
+    await this.locators.deleteButtonLocator.click();
+  }
+
   @step('Fill Order Form')
   async fillOrderForm(
     alias: string,

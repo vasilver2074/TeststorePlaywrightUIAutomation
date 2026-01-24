@@ -47,6 +47,8 @@ test.describe('Teststore UI Playwright automation', () => {
       await proceedToCheckoutPage.proceedToCheckout();
       await shoppingCartPage.proceedToCheckout();
 
+      await orderPage.clickDeleteButton();
+
       await orderPage.fillOrderForm(
         orderInformation.alias,
         orderInformation.company,

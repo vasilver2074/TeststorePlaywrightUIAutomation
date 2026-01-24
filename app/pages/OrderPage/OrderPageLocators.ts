@@ -39,4 +39,9 @@ export class OrderPageLocators extends BasePageLocators {
   readonly personalInformationLocator: Locator = this.baseLocator.getByRole('heading', {
     name: ' Personal Information',
   });
+
+  readonly deleteButtonLocator: Locator = this.baseLocator.getByRole('link', {
+    name: ' Delete',
+    exact: true,
+  });
 }
