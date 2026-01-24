@@ -22,4 +22,16 @@ export class MainPageLocators extends BasePageLocators {
     .getByRole('heading', {
       name: 'Hummingbird printed t-shirt',
     });
+  readonly quantityIncreaseLocator: Locator = this.baseLocator
+    .getByRole('button')
+    .filter({ hasText: /^$/ })
+    .first();
+
+  // readonly getCountValueLocator: Locator = this.baseLocator.getByRole('spinbutton', {
+  //   name: 'Quantity',
+  // }); id="quantity_wanted"
+  readonly getCountValueLocator: Locator = this.baseLocator.locator('#quantity_wanted');
 }
+
+// await page.getByRole('button').filter({ hasText: /^$/ }).first().click();
+// await page.getByRole('spinbutton', { name: 'Quantity' }).click();

@@ -44,6 +44,10 @@ test.describe('Teststore UI Playwright automation filter and hover functionality
       await mainPage.hoverClickProduct();
 
       await mainPage.isQuickViewModalVisible();
+
+      await mainPage.increaseQuantity();
+
+      await mainPage.verifyCountValue('2');
     }
   );
 });

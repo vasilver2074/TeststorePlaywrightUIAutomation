@@ -5,9 +5,6 @@ import { HeaderComponent } from '../components/HeaderComponent/HeaderComponent';
 import { step } from '../../../helpers/decorators/step';
 
 export class MainPage extends BasePage {
-  constructor(page: Page) {
-    super(page);
-  }
 
   readonly headerComponent = new HeaderComponent(this.page.locator('#index'));
 
@@ -70,5 +67,16 @@ export class MainPage extends BasePage {
   async isQuickViewModalVisible(): Promise<void> {
     await this.locators.quickViewModalLocator.waitFor({ timeout: 3000 });
     await expect(this.locators.quickViewModalLocator).toBeVisible();
+  }
+
+  @step('Increase quantity of product from Main Page')
+  async increaseQuantity(): Promise<void> {
+    await this.locators.quantityIncreaseLocator.click();
+  }
+
+  @step('Verify count value from Main Page')
+  async verifyCountValue(countValue: string): Promise<void> {
+    await this.page.waitForLoadState('networkidle');
+    await expect(this.locators.getCountValueLocator).toHaveValue(countValue);
   }
 }
