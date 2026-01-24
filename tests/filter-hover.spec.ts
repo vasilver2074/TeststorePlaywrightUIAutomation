@@ -1,4 +1,3 @@
-import { expect } from '@playwright/test';
 import { test } from '../fixtures/fixtures';
 
 test.describe('Teststore UI Playwright automation filter and hover functionality', () => {

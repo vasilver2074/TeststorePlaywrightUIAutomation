@@ -1,7 +1,7 @@
 import { expect, Page } from '@playwright/test';
 import { BasePage } from '../BasePage/BasePage';
 import { AccessoriesPageLocators } from './AccessoriesPageLocators';
-import { step } from '../../helpers/decorators/step';
+import { step } from '../../../helpers/decorators/step';
 
 export class AccessoriesPage extends BasePage {
   constructor(page: Page) {

@@ -1,7 +1,7 @@
 import { expect, Page } from '@playwright/test';
 import { BasePage } from '../BasePage/BasePage';
 import { ShoppingCartPageLocators } from './ShoppingCartPageLocators';
-import { step } from '../../helpers/decorators/step';
+import { step } from '../../../helpers/decorators/step';
 
 export class ShoppingCartPage extends BasePage {
   constructor(page: Page) {
@@ -25,7 +25,6 @@ export class ShoppingCartPage extends BasePage {
   @step('Get Count Value')
   async verifyCountValue(countValue: string): Promise<void> {
     await this.page.waitForLoadState('networkidle');
-    //return await this.locators.getCountValueLocator.innerText();
     await expect(this.locators.getCountValueLocator).toHaveText(countValue);
   }
 

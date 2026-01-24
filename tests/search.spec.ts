@@ -1,4 +1,3 @@
-import { expect } from '@playwright/test';
 import { test } from '../fixtures/fixtures';
 
 test.describe('Teststore UI Playwright automation Search functionality', () => {
@@ -21,26 +20,12 @@ test.describe('Teststore UI Playwright automation Search functionality', () => {
       tag: ['@regression, @positive'],
     },
     async ({ mainPage, searchResultPage }) => {
-      await mainPage.inputSearchMessage('accessories');
-      await mainPage.runSearch();
+      await mainPage.performSearch('accessories');
 
       await searchResultPage.isSearchResultsVisible();
       await searchResultPage.verifySearchResultItemsCount(8);
     }
   );
-
-  // test(
-  //   'TS-003 User performed Search with verifying search result count',
-  //   {
-  //     tag: ['@regression, @positive'],
-  //   },
-  //   async ({ mainPage, searchResultPage }) => {
-  //     await mainPage.inputSearchMessage('accessories');
-  //     await mainPage.runSearch();
-
-  //     expect(await searchResultPage.getSearchResultItemsCount()).toBe(8);
-  //   }
-  // );
 
   test(
     'TS-003 User verified icon displaying in Search field during search',

@@ -2,7 +2,7 @@ import { expect, Page } from '@playwright/test';
 import { BasePage } from '../BasePage/BasePage';
 import { MainPageLocators } from './MainPageLocators';
 import { HeaderComponent } from '../components/HeaderComponent/HeaderComponent';
-import { step } from '../../helpers/decorators/step';
+import { step } from '../../../helpers/decorators/step';
 
 export class MainPage extends BasePage {
   constructor(page: Page) {
@@ -35,6 +35,12 @@ export class MainPage extends BasePage {
 
   @step('Run search from Header Component')
   async runSearch(): Promise<void> {
+    await this.headerComponent.runSearch();
+  }
+
+  @step('Perform serch')
+  async performSearch(searchMessage: string): Promise<void> {
+    await this.headerComponent.inputSearchMessage(searchMessage);
     await this.headerComponent.runSearch();
   }
 

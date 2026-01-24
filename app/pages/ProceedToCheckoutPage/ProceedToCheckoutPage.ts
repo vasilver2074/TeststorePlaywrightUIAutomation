@@ -1,7 +1,7 @@
 import { Page } from '@playwright/test';
 import { BasePage } from '../BasePage/BasePage';
 import { ProceedToCheckoutPageLocators } from './ProceedToCheckoutPageLocators';
-import { step } from '../../helpers/decorators/step';
+import { step } from '../../../helpers/decorators/step';
 
 export class ProceedToCheckoutPage extends BasePage {
   constructor(page: Page) {

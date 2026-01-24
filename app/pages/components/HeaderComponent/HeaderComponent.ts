@@ -1,7 +1,7 @@
 import { expect, Locator } from '@playwright/test';
 import { BaseComponentsPage } from '../BaseComponentsPage';
 import { HeaderComponentLocators } from './HeaderComponentLocators';
-import { step } from '../../../helpers/decorators/step';
+import { step } from '../../../../helpers/decorators/step';
 
 export class HeaderComponent extends BaseComponentsPage {
   constructor(locator: Locator) {
@@ -26,15 +26,10 @@ export class HeaderComponent extends BaseComponentsPage {
   }
 
   @step('Get Search Icons Items Count')
-  async verifySearchIconsItemsCount(itemCount: number): Promise<number> {
-    const page = this.locators.countSearchIconsItemsLocator.page();
-
-    await page.waitForSelector('.ui-menu-item', {
-      state: 'visible',
+  async verifySearchIconsItemsCount(itemCount: number): Promise<void> {
+    await expect(this.locators.countSearchIconsItemsLocator).toHaveCount(itemCount, {
       timeout: 10000,
     });
-
-    return this.locators.countSearchIconsItemsLocator.count();
   }
 
   @step('Navigate to Accessories Page')

@@ -1,7 +1,7 @@
 import { Page } from '@playwright/test';
 import { BasePage } from '../BasePage/BasePage';
 import { LoginPageLocators } from './LoginPageLocators';
-import { step } from '../../helpers/decorators/step';
+import { step } from '../../../helpers/decorators/step';
 
 export class LoginPage extends BasePage {
   constructor(page: Page) {
